@@ -1,4 +1,4 @@
-package main
+package msgpack
 
 import (
 	"bytes"
@@ -8,9 +8,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/vmihailenco/msgpack"
-
 	"github.com/the-code-innovator/squeezer/shortener"
+	"github.com/vmihailenco/msgpack"
 )
 
 func httpPort() string {
