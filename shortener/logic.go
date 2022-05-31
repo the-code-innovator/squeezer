@@ -10,22 +10,22 @@ import (
 )
 
 var (
-	ErrorShortLinkNotFound := errors.New("ShortLink: NOT FOUND")
-	ErrorShortLinkInvalid  := errors.New("ShortLink: INVALID")
+	ErrorShortLinkNotFound = errors.New("ShortLink: NOT FOUND")
+	ErrorShortLinkInvalid  = errors.New("ShortLink: INVALID")
 )
 
 type shortLinkService struct {
-	shortLinkRepository ShortLinkRepository
+	shortLinkRepo ShortLinkRepository
 }
 
 func NewShortLinkService(shortLinkRepository ShortLinkRepository) ShortLinkService {
 	return &shortLinkService{
-		shortLinkRepository: shortLinkRepository,
+		shortLinkRepo: shortLinkRepository,
 	}
 }
 
 func (s *shortLinkService) Find(code string) (*ShortLink, error) {
-	return s.shortLinkRepository.Find(code)
+	return s.shortLinkRepo.Find(&code)
 }
 
 func (s *shortLinkService) Store(shortLink *ShortLink) error {
@@ -34,5 +34,5 @@ func (s *shortLinkService) Store(shortLink *ShortLink) error {
 	}
 	shortLink.Code = shortid.MustGenerate()
 	shortLink.CreatedAt = time.Now().UTC().Unix()
-	return s.shortLinkRepository.Store(shortLink)
+	return s.shortLinkRepo.Store(shortLink)
 }
