@@ -9,10 +9,10 @@ import (
 	"gopkg.in/dealancer/validate.v2"
 )
 
-func main() {
+var (
 	ErrorShortLinkNotFound = errors.New("ShortLink: NOT FOUND")
-	ErrorShortLinkInvalid = errors.New("ShortLink: INVALID")
-}
+	ErrorShortLinkInvalid  = errors.New("ShortLink: INVALID")
+)
 
 type shortLinkService struct {
 	shortLinkRepository ShortLinkRepository
@@ -20,12 +20,12 @@ type shortLinkService struct {
 
 func NewShortLinkService(shortLinkRepository ShortLinkRepository) ShortLinkService {
 	return &shortLinkService{
-		shortLinkRepository,
+		shortLinkRepository: shortLinkRepository,
 	}
 }
 
 func (s *shortLinkService) Find(code string) (*ShortLink, error) {
-	return &s.shortLinkRepository.Find(code)
+	return s.shortLinkRepository.Find(code)
 }
 
 func (s *shortLinkService) Store(shortLink *ShortLink) error {
