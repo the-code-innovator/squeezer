@@ -1,4 +1,4 @@
-module squeezer
+module github.com/the-code-innovator/squeezer
 
 go 1.18
 
@@ -13,7 +13,6 @@ require (
 require (
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/the-code-innovator/squeezer v0.0.0
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
 )
