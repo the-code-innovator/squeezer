@@ -13,7 +13,6 @@ require (
 require (
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/tensor-programming/hex-microservice v0.0.0-20191024074311-1ffbdc8a3813
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
 )

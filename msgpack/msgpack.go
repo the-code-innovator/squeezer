@@ -24,7 +24,7 @@ func httpPort() string {
 func main() {
 	address := fmt.Sprintf("http://localhost%s", httpPort())
 	redirect := shortener.Redirect{}
-	redirect.URL = "https://github.com/tensor-programming?tab=repositories"
+	redirect.URL = "https://github.com/the-code-innovator?tab=repositories"
 
 	body, err := msgpack.Marshal(&redirect)
 	if err != nil {
