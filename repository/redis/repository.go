@@ -14,7 +14,7 @@ type redisRepository struct {
 	client *redis.Client
 }
 
-func newRedisClient(redisURL string) (*redis.Client, error) {
+func NewRedisClient(redisURL string) (*redis.Client, error) {
 	options, err := redis.ParseURL(redisURL)
 	if err != nil {
 		return nil, err
@@ -24,9 +24,9 @@ func newRedisClient(redisURL string) (*redis.Client, error) {
 	return client, err
 }
 
-func newRedisRepository(redisURL string) (shortener.ShortLinkRepository, error) {
+func NewRedisRepository(redisURL string) (shortener.ShortLinkRepository, error) {
 	repository := &redisRepository{}
-	client, err := newRedisClient(redisURL)
+	client, err := NewRedisClient(redisURL)
 	if err != nil {
 		return nil, errors.Wrap(err, "repository.redisRepository.newRedisRepository")
 	}

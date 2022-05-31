@@ -18,7 +18,7 @@ type mongoRepository struct {
 	timeout  time.Duration
 }
 
-func newMongoClient(mongodbURL string, mongodbTimeOut int) (*mongo.Client, error) {
+func NewMongoClient(mongodbURL string, mongodbTimeOut int) (*mongo.Client, error) {
 	context, cancel := context.WithTimeout(context.Background(), time.Duration(mongodbTimeOut)*time.Second)
 	defer cancel()
 	client, err := mongo.Connect(context, options.Client().ApplyURI(mongodbURL))
@@ -32,12 +32,12 @@ func newMongoClient(mongodbURL string, mongodbTimeOut int) (*mongo.Client, error
 	return client, err
 }
 
-func newMongoRepository(mongodbURL, mongoDB string, mongodbTimeOut int) (shortener.ShortLinkRepository, error) {
+func NewMongoRepository(mongodbURL, mongoDB string, mongodbTimeOut int) (shortener.ShortLinkRepository, error) {
 	repository := &mongoRepository{
 		timeout:  time.Duration(mongodbTimeOut) * time.Second,
 		database: mongoDB,
 	}
-	client, err := newMongoClient(mongodbURL, mongodbTimeOut)
+	client, err := NewMongoClient(mongodbURL, mongodbTimeOut)
 	if err != nil {
 		return nil, errors.Wrap(err, "repository.mongoRepository.newMongoRepository")
 	}
