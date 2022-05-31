@@ -38,9 +38,9 @@ func (r *redisRepository) generateKey(code string) string {
 	return fmt.Sprintf("shortlink: %s", code)
 }
 
-func (r *redisRepository) Find(code string) (*shortener.ShortLink, error) {
+func (r *redisRepository) Find(code *string) (*shortener.ShortLink, error) {
 	shortLink := &shortener.ShortLink{}
-	key := r.generateKey(code)
+	key := r.generateKey(*code)
 	data, err := r.client.HGetAll(key).Result()
 	if err != nil {
 		return nil, errors.Wrap(err, "repository.ShortLink.redisRepository.Find")

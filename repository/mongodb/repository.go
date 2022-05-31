@@ -45,7 +45,7 @@ func NewMongoRepository(mongodbURL, mongoDB string, mongodbTimeOut int) (shorten
 	return repository, nil
 }
 
-func (m *mongoRepository) Find(code string) (*shortener.ShortLink, error) {
+func (m *mongoRepository) Find(code *string) (*shortener.ShortLink, error) {
 	context, cancel := context.WithTimeout(context.Background(), m.timeout)
 	defer cancel()
 	shortLink := &shortener.ShortLink{}
