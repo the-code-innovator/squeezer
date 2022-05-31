@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	ErrorShortLinkNotFound = errors.New("ShortLink: NOT FOUND")
-	ErrorShortLinkInvalid  = errors.New("ShortLink: INVALID")
+	ErrorShortLinkNotFound := errors.New("ShortLink: NOT FOUND")
+	ErrorShortLinkInvalid  := errors.New("ShortLink: INVALID")
 )
 
 type shortLinkService struct {
