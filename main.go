@@ -55,7 +55,7 @@ func port() string {
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
 	}
-	return port
+	return fmt.Sprintf(":%s", port)
 }
 
 func chooseRepo() shortener.ShortLinkRepository {
